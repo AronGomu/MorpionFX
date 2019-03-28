@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GameController">
+   <right>
+      <AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #009999; -fx-border-radius: 10;" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane fx:id="case1" layoutX="20.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#caseMouseClicked" onMouseEntered="#caseMouseEntered" onMouseExited="#caseMouseExited" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #c7cdcd; fx-border-color: #000000; -fx-border-width: 3; -fx-border-style: solid;" />
+            <AnchorPane layoutX="481.0" layoutY="35.0" onMouseClicked="#replayButtonClickEvent" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #FF7F50; fx-border-color: #000000; -fx-border-width: 3; -fx-border-style: solid;">
+               <children>
+                  <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#getClickedDuh" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/rotating-arrow-to-the-left.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Label layoutX="120.0" layoutY="500.0" text="00:00">
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </Label>
+            <Button layoutX="380.0" layoutY="500.0" mnemonicParsing="false" onAction="#quitButtonEvent" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #990000;" text="RETURN MENU" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </Button>
+            <Label fx:id="myMessage" layoutX="503.0" layoutY="205.0" text="Label" />
+            <AnchorPane fx:id="case2" layoutX="167.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#caseMouseClicked" onMouseEntered="#caseMouseEntered" onMouseExited="#caseMouseExited" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #c7cdcd; fx-border-color: #000000; -fx-border-width: 3; -fx-border-style: solid;" />
+            <AnchorPane fx:id="case3" layoutX="314.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#caseMouseClicked" onMouseEntered="#caseMouseEntered" onMouseExited="#caseMouseExited" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #c7cdcd; fx-border-color: #000000; -fx-border-width: 3; -fx-border-style: solid;" />
+            <AnchorPane fx:id="case4" layoutX="20.0" layoutY="167.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#caseMouseClicked" onMouseEntered="#caseMouseEntered" onMouseExited="#caseMouseExited" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #c7cdcd; fx-border-color: #000000; -fx-border-width: 3; -fx-border-style: solid;" />
+            <AnchorPane fx:id="case5" layoutX="167.0" layoutY="167.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#caseMouseClicked" onMouseEntered="#caseMouseEntered" onMouseExited="#caseMouseExited" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #c7cdcd; fx-border-color: #000000; -fx-border-width: 3; -fx-border-style: solid;" />
+            <AnchorPane fx:id="case6" layoutX="314.0" layoutY="167.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#caseMouseClicked" onMouseEntered="#caseMouseEntered" onMouseExited="#caseMouseExited" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #c7cdcd; fx-border-color: #000000; -fx-border-width: 3; -fx-border-style: solid;" />
+            <AnchorPane fx:id="case7" layoutX="20.0" layoutY="314.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#caseMouseClicked" onMouseEntered="#caseMouseEntered" onMouseExited="#caseMouseExited" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #c7cdcd; fx-border-color: #000000; -fx-border-width: 3; -fx-border-style: solid;" />
+            <AnchorPane fx:id="case8" layoutX="167.0" layoutY="314.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#caseMouseClicked" onMouseEntered="#caseMouseEntered" onMouseExited="#caseMouseExited" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #c7cdcd; fx-border-color: #000000; -fx-border-width: 3; -fx-border-style: solid;" />
+            <AnchorPane fx:id="case9" layoutX="314.0" layoutY="314.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#caseMouseClicked" onMouseEntered="#caseMouseEntered" onMouseExited="#caseMouseExited" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #c7cdcd; fx-border-color: #000000; -fx-border-width: 3; -fx-border-style: solid;" />
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>
