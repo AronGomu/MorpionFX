@@ -1,14 +1,20 @@
 package controller;
 
 import java.awt.Button;
+import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.sun.javafx.geom.Rectangle;
 
+import javafx.animation.FadeTransition;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -19,22 +25,48 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 @SuppressWarnings("restriction")
 public class GameController {
 	@FXML private Label myMessage;
-	@FXML private AnchorPane case1; @FXML private ImageView XImage1; @FXML private ImageView OImage1;
-	@FXML private AnchorPane case2; @FXML private ImageView XImage2; @FXML private ImageView OImage2;
+	
+	@FXML private AnchorPane case0;
+	@FXML private AnchorPane case1; @FXML private AnchorPane case2; @FXML private AnchorPane case3;
+	@FXML private AnchorPane case4; @FXML private AnchorPane case5; @FXML private AnchorPane case6;
+	@FXML private AnchorPane case7; @FXML private AnchorPane case8;
+	
+	@FXML private AnchorPane gamePane; 
+	@FXML private AnchorPane endGamePane;
+	
+	ArrayList<AnchorPane> listCase = new ArrayList<AnchorPane>();
+	ArrayList<AnchorPane> caseToMakeVisible = new ArrayList<AnchorPane>();
+	
+	public Morpion morpion;
+	
 	
 	public boolean click = false;
 	public int playerTurn = 0;
 	public int nbTurn = 0;
-	public String[] matrice = new String[9];
 	
 
 	public void initialize() {
-
-		case1 = new AnchorPane();
+		
+		listCase.add(case0);
+		listCase.add(case1);
+		listCase.add(case2);
+		listCase.add(case3);
+		listCase.add(case4);
+		listCase.add(case5);
+		listCase.add(case6);
+		listCase.add(case7);
+		listCase.add(case8);
+		
+		morpion = new Morpion();
+		
+		for (int i = 0 ; i < morpion.taillePlat ; i++) {
+			morpion.plateau[i].id = "case" + i;
+		}
 
 	}
 	
@@ -92,40 +124,102 @@ public class GameController {
 		nbTurn++;
 		
 		Object source = e.getSource();
-		String idSource = ((AnchorPane) source).getId();
+		AnchorPane apClicked = (AnchorPane) source;
+		String idSource = apClicked.getId();
+		
 		if (playerTurn == 0) {
 			switch(idSource) {
-			case "case1" : matrice[0] = "O"; break;
-			case "case2" : matrice[1] = "O"; break;
-			case "case3" : matrice[2] = "O"; break;
-			case "case4" : matrice[3] = "O"; break;
-			case "case5" : matrice[4] = "O"; break;
-			case "case6" : matrice[5] = "O"; break;
-			case "case7" : matrice[6] = "O"; break;
-			case "case8" : matrice[7] = "O"; break;
-			case "case9" : matrice[8] = "O"; break;
+			case "case0" :
+				morpion.plateau[0].contenu = "O";
+				morpion.plateau[0].ivIsRound();
+				break;
+			case "case1" : 
+				morpion.plateau[1].contenu = "O";
+				morpion.plateau[1].ivIsRound();
+				break;
+			case "case2" : 
+				morpion.plateau[2].contenu = "O";
+				morpion.plateau[2].ivIsRound();
+				break;
+			case "case3" :
+				morpion.plateau[3].contenu = "O";
+				morpion.plateau[3].ivIsRound();
+				break;
+			case "case4" :
+				morpion.plateau[4].contenu = "O";
+				morpion.plateau[4].ivIsRound();
+				break;
+			case "case5" :
+				morpion.plateau[5].contenu = "O";
+				morpion.plateau[5].ivIsRound();
+				break;
+			case "case6" :
+				morpion.plateau[6].contenu = "O";
+				morpion.plateau[6].ivIsRound();
+				break;
+			case "case7" :
+				morpion.plateau[7].contenu = "O";
+				morpion.plateau[7].ivIsRound();
+				break;
+			case "case8" :
+				morpion.plateau[8].contenu = "O";
+				morpion.plateau[8].ivIsRound();
+				break;
 			}
 			
 		}
 		else if(playerTurn == 1) {
 			switch(idSource) {
-			case "case1" : matrice[0] = "X"; break;
-			case "case2" : matrice[1] = "X"; break;
-			case "case3" : matrice[2] = "X"; break;
-			case "case4" : matrice[3] = "X"; break;
-			case "case5" : matrice[4] = "X"; break;
-			case "case6" : matrice[5] = "X"; break;
-			case "case7" : matrice[6] = "X"; break;
-			case "case8" : matrice[7] = "X"; break;
-			case "case9" : matrice[8] = "X"; break;
+			case "case0" :
+				morpion.plateau[0].contenu = "X";
+				morpion.plateau[0].ivIsCross();
+				break;
+			case "case1" :
+				morpion.plateau[1].contenu = "X";
+				morpion.plateau[1].ivIsCross();
+				break;
+			case "case2" :
+				morpion.plateau[2].contenu = "X";
+				morpion.plateau[2].ivIsCross();
+				break;
+			case "case3" :
+				morpion.plateau[3].contenu = "X";
+				morpion.plateau[3].ivIsCross();
+				break;
+			case "case4" :
+				morpion.plateau[4].contenu = "X";
+				morpion.plateau[4].ivIsCross();
+				break;
+			case "case5" : 
+				morpion.plateau[5].contenu = "X";
+				morpion.plateau[5].ivIsCross();
+				break;
+			case "case6" :
+				morpion.plateau[6].contenu = "X";
+				morpion.plateau[6].ivIsCross();
+				break;
+			case "case7" :
+				morpion.plateau[7].contenu = "X";
+				morpion.plateau[7].ivIsCross();
+				break;
+			case "case8" : 
+				morpion.plateau[8].contenu = "X";
+				morpion.plateau[8].ivIsCross();
+				break;
 			}
 		}
 		
-		if (this.checkWinCondition() == true) {
-			myMessage.setText("Le joueur " + this.playerTurn + " a gagné !");
+		
+		// Check if a player won
+		if (morpion.checkWinCondition() == true) {
+			myMessage.setText("Le joueur " + this.playerTurn + " a gagne !");
+			endGameTransitions();
+			
+			
 		}
 		else if(this.nbTurn == 9) {
-			myMessage.setText("Egalité...");
+			myMessage.setText("Egalite...");
+			endGameTransitions();
 		}
 		
 		if (playerTurn == 0) playerTurn++;
@@ -133,15 +227,94 @@ public class GameController {
 		
 		((AnchorPane) source).setDisable(true);
 		
-		System.out.println("click : " + click);
+	}
+
+
+	public void endGameTransitions() {
+		
+		gamePane.setDisable(true);
+		
+		if (morpion.winnerCase.size() != 0) {
+			for (int i = 0 ; i < morpion.taillePlat ; i++) {
+				if ( (morpion.plateau[i] != morpion.winnerCase.get(0) && morpion.plateau[i] != morpion.winnerCase.get(1) && morpion.plateau[i] != morpion.winnerCase.get(2)) == true) {
+					for (int j = 0 ; j < listCase.size() ; j++) {
+						if (listCase.get(j).getId().equals(morpion.plateau[i].id)) {
+							caseToMakeVisible.add(listCase.get(j));
+							FadeTransition caseOutTransition = new FadeTransition(Duration.millis(1000), listCase.get(j));
+							caseOutTransition.setToValue(0.0);
+							caseOutTransition.play();
+						}
+					}
+					
+				}
+			}
+		}
+		
+		
+		FadeTransition gamePaneTransition = new FadeTransition(Duration.millis(1500), gamePane);
+		gamePaneTransition.setFromValue(1.0);
+		gamePaneTransition.setToValue(0.5);
+		gamePaneTransition.play();
+		
+		endGamePane.setVisible(true);
+		endGamePane.setDisable(false);
+		FadeTransition endGamePaneTransition = new FadeTransition(Duration.millis(1500), endGamePane);
+		endGamePaneTransition.setFromValue(0.0);
+		endGamePaneTransition.setToValue(0.9);
+		endGamePaneTransition.play();
 	}
 	
-	public void replayButtonClickEvent(Event e) {
-		System.out.println("Button is being clicked");
+	
+	public void startGameTransitions() {
+		gamePane.setDisable(true);
+		
+		for (int i = 0 ; i < caseToMakeVisible.size() ; i++) {
+			FadeTransition caseInTransition = new FadeTransition(Duration.millis(1500), caseToMakeVisible.get(i));
+			caseInTransition.setToValue(1.0);
+			caseInTransition.play();
+		}
+		caseToMakeVisible.clear();
+		
+		FadeTransition gamePaneTransition = new FadeTransition(Duration.millis(1500), gamePane);
+		gamePaneTransition.setFromValue(0.5);
+		gamePaneTransition.setToValue(1.0);
+		gamePaneTransition.play();
+		
+		
+		endGamePane.setVisible(false);
+		endGamePane.setDisable(false);
+		
+		/*
+		FadeTransition endGamePaneTransition = new FadeTransition(Duration.millis(1500), endGamePane);
+		endGamePaneTransition.setFromValue(0.9);
+		endGamePaneTransition.setToValue(0.0);
+		endGamePaneTransition.play();
+		*/
+	}
+	
+	public void resetButtonClickEvent(Event e) {
+		newGame();
+	}
+
+
+	private void newGame() {
+		setMorpionToEnable();
+		resetMorpion();
+		this.nbTurn = 0;
+		myMessage.setText("");
+	}
+	
+	public void playAgainClickEvent(Event e) {
+		System.out.println("damn");
+		startGameTransitions();
+		endGamePane.setDisable(true);
+		gamePane.setDisable(false);
+		//Thread.sleep(1500);
+		newGame();
 	}
 	
 	public void getClickedDuh(Event e) {
-		System.out.println("Button is being clicked");
+		System.out.println("getClickedDuh");
 	}
 	
 
@@ -150,52 +323,32 @@ public class GameController {
 	}
 	
 	
-	public boolean checkWinCondition() {
-		
-		printMatrice();
-		
-		// ligne
-		if (this.matrice[0] == this.matrice[1] && this.matrice[1] == this.matrice[2]) {
-			if (this.matrice[0] != null) return true;
+	
+	public void setMorpionToDisable() {
+		for (int i = 0 ; i < listCase.size() ; i++) {
+			listCase.get(i).setDisable(true);
 		}
-		if (this.matrice[3] == this.matrice[4] && this.matrice[4] == this.matrice[5]) {
-			if (this.matrice[3] != null) return true;
-		}
-		if (this.matrice[6] == this.matrice[7] && this.matrice[7] == this.matrice[8]) {
-				if (this.matrice[6] != null) return true;
-		}
-		
-		// colonne
-		if (this.matrice[0] == this.matrice[3] && this.matrice[3] == this.matrice[6]) {
-			if (this.matrice[0] != null) return true;
-		}
-		if (this.matrice[1] == this.matrice[4] && this.matrice[4] == this.matrice[7]) {
-			if (this.matrice[1] != null) return true;
-		}
-		if (this.matrice[2] == this.matrice[5] && this.matrice[5] == this.matrice[8]) {
-			if (this.matrice[2] != null) return true;
-		}
-		// diag
-		if (this.matrice[0] == this.matrice[4] && this.matrice[4] == this.matrice[8]) {
-			if (this.matrice[0] != null) return true;
-		}
-		if (this.matrice[2] == this.matrice[4] && this.matrice[4] == this.matrice[6]) {
-			if (this.matrice[2] != null) return true;
-		}
-		
-		return false;
 	}
 	
-	public void resetMatrice() {
+	public void setMorpionToEnable() {
+		for (int i = 0 ; i < listCase.size() ; i++) {
+			listCase.get(i).setDisable(false);
+		}
+	}
+	
+	public void resetMorpion() {
+		morpion.winnerCase.clear();
 		for (int i = 0 ; i < 9 ; i++) {
-			matrice[i] = null;
+			morpion.plateau[i].contenu = null;
+			morpion.plateau[i].iv = null;
+			listCase.get(i).getChildren().clear();
 		}
 	}
 	
 	public void printMatrice() {
-		System.out.println(matrice[0] + matrice[1] + matrice[2]);
-		System.out.println(matrice[3] + matrice[4] + matrice[5]);
-		System.out.println(matrice[6] + matrice[7] + matrice[8]);
+		System.out.println(morpion.plateau[0].contenu + morpion.plateau[1].contenu + morpion.plateau[2].contenu);
+		System.out.println(morpion.plateau[3].contenu + morpion.plateau[4].contenu + morpion.plateau[5].contenu);
+		System.out.println(morpion.plateau[6].contenu + morpion.plateau[7].contenu + morpion.plateau[8].contenu);
 	}
 
 }
