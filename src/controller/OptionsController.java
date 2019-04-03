@@ -19,6 +19,11 @@ public class OptionsController {
 	@FXML Button retourButton;
 	
 	
+	int nbHiddenLayers;
+	double learningRate;
+	int epochs;
+	
+	
 	public void facileClickEvent(ActionEvent event) {
 		System.out.println("facile");
 	}

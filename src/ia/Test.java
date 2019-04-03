@@ -18,12 +18,19 @@ public class Test {
 
 	public static void test(){
 		try {
-			int[] layers = new int[]{ 2, 5, 1 };
 			
-			double error = 0.0 ;
+			// CREATION IA
+			
+			//entrée sortie morpion et utilisateur choisie milieu couche caché
+			int[] layers = new int[]{ 9, 5, 9 };
+			
+			double error = 0.0 ;									// learning rate
 			MultiLayerPerceptron net = new MultiLayerPerceptron(layers, 0.1, new SigmoidalTransferFunction());
+		
+			
+			
+			
 			double samples = 1000000000 ;
-
 			//TRAINING ...
 			for(int i = 0; i < samples; i++){
 				double[] inputs = new double[]{Math.round(Math.random()), Math.round(Math.random())};
@@ -46,7 +53,9 @@ public class Test {
 			System.out.println("Learning completed!");
 
 			//TEST ...
+			// un tableau de double à un instant t
 			double[] inputs = new double[]{0.0, 1.0};
+			// sors un tableau de probabilité de de coup selon les cases
 			double[] output = net.forwardPropagation(inputs);
 
 			System.out.println(inputs[0]+" or "+inputs[1]+" = "+Math.round(output[0])+" ("+output[0]+")");

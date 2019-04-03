@@ -7,7 +7,7 @@ import javafx.scene.layout.AnchorPane;
 public class Case {
 
 	String id = null;
-	String contenu = null;
+	int contenu = 0;
 	ImageView iv = null;
 	
 	public Case() {

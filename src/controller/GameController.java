@@ -130,39 +130,39 @@ public class GameController {
 		if (playerTurn == 0) {
 			switch(idSource) {
 			case "case0" :
-				morpion.plateau[0].contenu = "O";
+				morpion.plateau[0].contenu = -1;
 				morpion.plateau[0].ivIsRound();
 				break;
 			case "case1" : 
-				morpion.plateau[1].contenu = "O";
+				morpion.plateau[1].contenu = -1;
 				morpion.plateau[1].ivIsRound();
 				break;
 			case "case2" : 
-				morpion.plateau[2].contenu = "O";
+				morpion.plateau[2].contenu = -1;
 				morpion.plateau[2].ivIsRound();
 				break;
 			case "case3" :
-				morpion.plateau[3].contenu = "O";
+				morpion.plateau[3].contenu = -1;
 				morpion.plateau[3].ivIsRound();
 				break;
 			case "case4" :
-				morpion.plateau[4].contenu = "O";
+				morpion.plateau[4].contenu = -1;
 				morpion.plateau[4].ivIsRound();
 				break;
 			case "case5" :
-				morpion.plateau[5].contenu = "O";
+				morpion.plateau[5].contenu = -1;
 				morpion.plateau[5].ivIsRound();
 				break;
 			case "case6" :
-				morpion.plateau[6].contenu = "O";
+				morpion.plateau[6].contenu = -1;
 				morpion.plateau[6].ivIsRound();
 				break;
 			case "case7" :
-				morpion.plateau[7].contenu = "O";
+				morpion.plateau[7].contenu = -1;
 				morpion.plateau[7].ivIsRound();
 				break;
 			case "case8" :
-				morpion.plateau[8].contenu = "O";
+				morpion.plateau[8].contenu = -1;
 				morpion.plateau[8].ivIsRound();
 				break;
 			}
@@ -171,39 +171,39 @@ public class GameController {
 		else if(playerTurn == 1) {
 			switch(idSource) {
 			case "case0" :
-				morpion.plateau[0].contenu = "X";
+				morpion.plateau[0].contenu = 1;
 				morpion.plateau[0].ivIsCross();
 				break;
 			case "case1" :
-				morpion.plateau[1].contenu = "X";
+				morpion.plateau[1].contenu = 1;
 				morpion.plateau[1].ivIsCross();
 				break;
 			case "case2" :
-				morpion.plateau[2].contenu = "X";
+				morpion.plateau[2].contenu = 1;
 				morpion.plateau[2].ivIsCross();
 				break;
 			case "case3" :
-				morpion.plateau[3].contenu = "X";
+				morpion.plateau[3].contenu = 1;
 				morpion.plateau[3].ivIsCross();
 				break;
 			case "case4" :
-				morpion.plateau[4].contenu = "X";
+				morpion.plateau[4].contenu = 1;
 				morpion.plateau[4].ivIsCross();
 				break;
 			case "case5" : 
-				morpion.plateau[5].contenu = "X";
+				morpion.plateau[5].contenu = 1;
 				morpion.plateau[5].ivIsCross();
 				break;
 			case "case6" :
-				morpion.plateau[6].contenu = "X";
+				morpion.plateau[6].contenu = 1;
 				morpion.plateau[6].ivIsCross();
 				break;
 			case "case7" :
-				morpion.plateau[7].contenu = "X";
+				morpion.plateau[7].contenu = 1;
 				morpion.plateau[7].ivIsCross();
 				break;
 			case "case8" : 
-				morpion.plateau[8].contenu = "X";
+				morpion.plateau[8].contenu = 1;
 				morpion.plateau[8].ivIsCross();
 				break;
 			}
@@ -339,7 +339,7 @@ public class GameController {
 	public void resetMorpion() {
 		morpion.winnerCase.clear();
 		for (int i = 0 ; i < 9 ; i++) {
-			morpion.plateau[i].contenu = null;
+			morpion.plateau[i].contenu = 0;
 			morpion.plateau[i].iv = null;
 			listCase.get(i).getChildren().clear();
 		}

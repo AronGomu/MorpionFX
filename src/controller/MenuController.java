@@ -54,7 +54,24 @@ public class MenuController {
     }
 
     public void vsIAButtonEvent(ActionEvent event) {
-        System.out.println("vsIAButtonEvent");
+endGameTransitions();
+    	
+    	Parent loader = null;
+		
+    	try {
+			loader = FXMLLoader.load(getClass().getResource("/controller/GameIA.fxml"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    	
+    	Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+    	Scene scene = new Scene(loader);
+    	
+    	
+    	bgPaneTransition.setOnFinished(e -> {
+    		stage.setScene(scene);
+    		stage.show();
+    	});
     }
 
     public void optionsButtonEvent(ActionEvent event) {
