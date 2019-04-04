@@ -13,7 +13,6 @@ public class Coup {
 	public static double[] getVector(String[] t) {
 		try {
 			double[] vector = new double[t.length];
-			System.out.println("YOYOYOYOYOYOY : " + t.length + "\n\n");
 			if (t.length < 2) return null;
 			
 			for (int i = 0; i < vector.length; i++) {

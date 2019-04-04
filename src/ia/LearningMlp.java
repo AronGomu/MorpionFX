@@ -5,6 +5,9 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.HashSet;
 
+import controller.GameIAController;
+import controller.OptionsController;
+
 public class LearningMlp {
 
 	/**
@@ -14,6 +17,8 @@ public class LearningMlp {
 	 * @param learningRate
 	 * @param epochs
 	 */
+	
+	
 	public static void learn(MultiLayerPerceptron net, String file, int epochs) {
 		try {
 
@@ -60,7 +65,8 @@ public class LearningMlp {
 			}
 			error /= epochs ;
 
-			System.out.println("Final error: "+error);
+			System.out.println("Final error: " + error);
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
